@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -24,12 +24,17 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+} */
 
 /* html, body, heading, big scoped */
 @layer base {
+  html {
+    @apply !scrollbar-thin !scrollbar-track-transparent
+    !scrollbar-thumb-red-600
+  }
+
   body {
-    @apply bg-[#141414] text-white;
+    @apply bg-[#131313] text-white 
   }
 
   header {
@@ -45,11 +50,18 @@ body {
     text-wrap: balance;
   }
 }
+
 /* custom classes */
 @layer components {
   .headerLink {
     @apply cursor-pointer 
     text-sm font-light 
     text-[#e5e5e5] transition duration-[.4s] hover:text-[#b3b3b3];
+  }
+
+  .bannerButton {
+    @apply flex items-center gap-x-2 rounded px-5 py-1.5 
+    text-sm font-semibold transition hover:opacity-75 
+    md:py-2.5 md:px-8 md:text-xl
   }
 }
