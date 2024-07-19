@@ -64,9 +64,9 @@ function LoginPage() {
           <p className="text-center text-black">
             This is just a clone project. This is not real Netflix. You do not
             need a netflix account to view this site. If you have not logged in
-            before, just press the 'Sign up now' button at the bottom and use
-            your email and any password, once you do this, you can then log in
-            using this same information anytime going forward.
+            before, just press the &apos;Sign up now&apos; button at the bottom
+            and use your email and any password, once you do this, you can then
+            log in using this same information anytime going forward.
           </p>
         </div>
       )}
