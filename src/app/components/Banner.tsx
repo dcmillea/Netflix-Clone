@@ -5,7 +5,6 @@ import { Movie } from "../../../typings";
 import { useEffect, useState } from "react";
 import { baseUrl } from "../../../constants/movie";
 import { FaPlay } from "react-icons/fa";
-import {} from "@heroicons/react/16/solid";
 import { HiInformationCircle } from "react-icons/hi";
 import { useRecoilState } from "recoil";
 import { modalState, movieState } from "../atoms/modalAtom";
@@ -21,6 +20,12 @@ function Banner({ netflixOriginals }: Props) {
   const imagePath = movie?.backdrop_path || movie?.poster_path;
 
   useEffect(() => {
+    if (
+      !netflixOriginals ||
+      !Array.isArray(netflixOriginals) ||
+      netflixOriginals.length === 0
+    )
+      return;
     const randomIndex = Math.floor(Math.random() * netflixOriginals.length);
     setMovie(netflixOriginals[randomIndex]);
   }, [netflixOriginals]);
