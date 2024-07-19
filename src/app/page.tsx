@@ -4,17 +4,18 @@ import Banner from "./components/Banner";
 import Header from "./components/Header";
 import Row from "./components/Row";
 import requests from "./utils/requests";
+import Modal from "./components/Modal";
 
-interface Props {
-  netflixOriginals: Movie[];
-  trendingNow: Movie[];
-  topRated: Movie[];
-  actionMovies: Movie[];
-  comedyMovies: Movie[];
-  horrorMovies: Movie[];
-  romanceMovies: Movie[];
-  documentaries: Movie[];
-}
+// interface Props {
+//   netflixOriginals: Movie[];
+//   trendingNow: Movie[];
+//   topRated: Movie[];
+//   actionMovies: Movie[];
+//   comedyMovies: Movie[];
+//   horrorMovies: Movie[];
+//   romanceMovies: Movie[];
+//   documentaries: Movie[];
+// }
 
 export default async function Home() {
   const [
@@ -36,6 +37,7 @@ export default async function Home() {
     fetch(requests.fetchRomanceMovies).then((res) => res.json()),
     fetch(requests.fetchDocumentaries).then((res) => res.json()),
   ]);
+
   return (
     <div className="relative h-screen bg-gradient-to-b lg:h-[140vh]">
       <Head>
@@ -56,7 +58,7 @@ export default async function Home() {
           <Row title="Documentaries" movies={documentaries.results} />
         </section>
       </main>
-      {/* Modal */}
+      <Modal />
     </div>
   );
 }
