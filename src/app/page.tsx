@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import Row from "./components/Row";
 import requests from "./utils/requests";
 import Modal from "./components/Modal";
+import useMovies from "./hooks/useMovies";
+import { Movie } from "../../typings";
 
 // interface Props {
 //   netflixOriginals: Movie[];
@@ -17,6 +19,17 @@ import Modal from "./components/Modal";
 // }
 
 export default async function Home() {
+  // const {
+  //   netflixOriginals,
+  //   trendingNow,
+  //   topRated,
+  //   actionMovies,
+  //   comedyMovies,
+  //   horrorMovies,
+  //   romanceMovies,
+  //   documentaries,
+  // } = useMovies();
+
   const [
     netflixOriginals,
     trendingNow,
@@ -36,9 +49,6 @@ export default async function Home() {
     fetch(requests.fetchRomanceMovies).then((res) => res.json()),
     fetch(requests.fetchDocumentaries).then((res) => res.json()),
   ]);
-  console.log("below are the results:");
-  console.log(netflixOriginals.results);
-  console.log("above are the results:");
 
   return (
     <div className="relative h-screen bg-gradient-to-b lg:h-[140vh]">

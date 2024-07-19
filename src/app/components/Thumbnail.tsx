@@ -12,6 +12,7 @@ interface Props {
 }
 
 function Thumbnail({ film }: Props) {
+  console.log(film);
   const [showModal, setShowModal] = useRecoilState(modalState);
   const [movie, setMovieState] = useRecoilState(movieState);
   const baseMovieTitle = film.title ? film.title : film.original_name;
