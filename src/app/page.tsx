@@ -36,7 +36,9 @@ export default async function Home() {
     fetch(requests.fetchRomanceMovies).then((res) => res.json()),
     fetch(requests.fetchDocumentaries).then((res) => res.json()),
   ]);
+  console.log("below are the results:");
   console.log(netflixOriginals.results);
+  console.log("above are the results:");
 
   return (
     <div className="relative h-screen bg-gradient-to-b lg:h-[140vh]">
