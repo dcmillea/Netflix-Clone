@@ -2,15 +2,14 @@
 
 import MuiModal from "@mui/material/Modal";
 import { useRecoilState } from "recoil";
-import { modalState, movieState } from "../atoms/modalAtom";
-import { PlusIcon, XMarkIcon } from "@heroicons/react/16/solid";
+import { modalState, movieList, movieState } from "../atoms/modalAtom";
+import { CheckIcon, PlusIcon, XMarkIcon } from "@heroicons/react/16/solid";
 import { useEffect, useState } from "react";
 import { Element, Genre } from "../../../typings";
 import ReactPlayer from "react-player/lazy";
 import { FaPlay } from "react-icons/fa";
 import { BiVolumeFull, BiVolumeMute } from "react-icons/bi";
-import { RiThumbUpFill } from "react-icons/ri";
-import VideoNotAvailableImage from "../../../images/videoNotAvailable.gif";
+import { RiThumbDownFill, RiThumbUpFill } from "react-icons/ri";
 import NoMovieFound from "./NoMovieFound";
 
 function Modal() {
@@ -19,11 +18,19 @@ function Modal() {
   const [trailer, setTrailer] = useState("");
   const [genres, setGenres] = useState<Genre[]>([]);
   const [muted, setMuted] = useState(false);
+  const [addedToList, setAddedToList] = useState(false);
+  const [thumbsUp, setThumbsUp] = useState(true);
 
-  console.log(movie);
+  const handleList = () => {
+    setAddedToList(!addedToList);
+  };
 
   const handleClose = () => {
     setShowModal(false);
+  };
+
+  const handleThumbsUp = () => {
+    setThumbsUp(!thumbsUp);
   };
 
   useEffect(() => {
@@ -93,12 +100,20 @@ function Modal() {
                 Play
               </button>
 
-              <button className="modalButton">
-                <PlusIcon className="h-7 w-7" />
+              <button className="modalButton" onClick={handleList}>
+                {addedToList ? (
+                  <CheckIcon className="h-7 w-7" />
+                ) : (
+                  <PlusIcon className="h-7 w-7" />
+                )}
               </button>
 
-              <button className="modalButton">
-                <RiThumbUpFill className="h-7 w-7" />
+              <button className="modalButton" onClick={handleThumbsUp}>
+                {thumbsUp ? (
+                  <RiThumbUpFill className="h-7 w-7" />
+                ) : (
+                  <RiThumbDownFill className="h-7 w-7" />
+                )}
               </button>
             </div>
 
